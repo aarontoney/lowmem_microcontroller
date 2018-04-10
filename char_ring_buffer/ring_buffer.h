@@ -1,8 +1,8 @@
-#ifndef _CHEFSTEPS_H_
-#define _CHEFSTEPS_H_
+#ifndef _RINGBUFF_H_
+#define _RINGBUFF_H_
 //------------------------------------------------------------------------------
 //- 
-//- File:   chefsteps_ring_buffer.h
+//- File:   ring_buffer.h
 //- Author: Aaron Toney
 //- Date:   April 22nd, 2016
 //- Verion: 0.1
@@ -10,8 +10,7 @@
 //- 
 //- Description:
 //- 
-//- This header file defines a very simple character fifo ring buffer. It was an
-//- interview filter problem for an embedded systems job at ChefSteps. 
+//- This header file defines a very simple character fifo ring buffer. 
 //-
 //- Comment about multi-threading
 //- -----------------------------
@@ -100,6 +99,6 @@ void push( cs_fifo_char_buffer *, char);
 char pop(cs_fifo_char_buffer *);
 
 //------------------------------------------------------------------------------
-#endif // Closes the #ifndef _CHEFSTEPS_H_ at the top of this file
+#endif // Closes the #ifndef 
 
 

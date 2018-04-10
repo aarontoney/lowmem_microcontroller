@@ -1,5 +1,4 @@
 //------------------------------------------------------------------------------
-//- 
 //- File:   test_harness.c
 //- Author: Aaron Toney
 //- Date:   April 21st, 2016
@@ -8,12 +7,11 @@
 //- 
 //- Description:
 //- 
-//- This is a test harness for a very simple fifo ring buffer. It was one of the
-//- coding pre-screening problems for chefsteps. 
+//- This is a test harness for a very simple fifo ring buffer.
 //- 
 //------------------------------------------------------------------------------
 
-#include "chefsteps_ring_buffer.h"
+#include "ring_buffer.h"
 
 char *gLetterLUT = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 size_t gLetterLUTLen = 62;

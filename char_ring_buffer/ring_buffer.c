@@ -89,7 +89,7 @@ int get_size(cs_fifo_char_buffer *curBuffer){
 // function: push
 //
 // Note: I talk about changes I would make here to have this code be usable in 
-//       a multi-threaded context at the top of chefsteps_fing_buffer.h.
+//       a multi-threaded context at the top of ring_buffer.h.
 //
 //------------------------------------------------------------------------------
 void push( cs_fifo_char_buffer *curBuffer, 
@@ -120,7 +120,7 @@ void push( cs_fifo_char_buffer *curBuffer,
 // function: pop
 //
 // Note: I talk about changes I would make here to have this code be usable in 
-//       a multi-threaded context at the top of chefsteps_fing_buffer.h.
+//       a multi-threaded context at the top of ring_buffer.h.
 //
 //------------------------------------------------------------------------------
 
