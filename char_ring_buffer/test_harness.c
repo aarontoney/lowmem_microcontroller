@@ -1,13 +1,13 @@
 //------------------------------------------------------------------------------
 //- File:   test_harness.c
 //- Author: Aaron Toney
-//- Date:   April 21st, 2016
-//- Verion: 0.1
+//- Date:   August 17th, 2018
+//- Verion: 0.2
 //- Revions:
 //- 
 //- Description:
 //- 
-//- This is a test harness for a very simple fifo ring buffer.
+//- This is a test harness for a low memory fifo ring buffer.
 //- 
 //------------------------------------------------------------------------------
 
@@ -70,7 +70,6 @@ int main()
 	//-------------------------------------
       case 1:
 	test_bulkpushpop( &myBuffer );
-	loop = FALSE;
 	break;
 
 	//-------------------------------------
@@ -78,7 +77,6 @@ int main()
 	//-------------------------------------
       case 2:
 	test_basic( &myBuffer );
-	loop = FALSE;
 	break;
 
 	//-------------------------------------
@@ -127,7 +125,6 @@ int main()
 	//-------------------------------------
       case 6:
 	test_deliberate_underflow( &myBuffer );
-	loop = FALSE;
 	break;
 
 	//-------------------------------------
