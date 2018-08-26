@@ -1,0 +1,58 @@
+//------------------------------------------------------------------------------
+// Things to add to Array list
+//------------------------------------------------------------------------------
+
+-- check for error in get_at with index [ - - - 1 2 3 - - - ]
+
+
+bool unique - check if it is unique
+void unique - make the list unique
+remove_at - remove the elenet at index x
+remove_if - 
+
+partition - push_back + partition - does sorted insertion. If thats the only interface
+            being used, that equates to a sorted list. 
+
+//------------------------------------------------------------------------------
+// Abstract the list into other data structures - specifically. 
+//------------------------------------------------------------------------------
+
+//----------------------------------------------------------
+// stack
+//----------------------------------------------------------
+
+push - at front, front called top in a stack
+pop - at front
+
+bool isEmpty - checks if stack is empty
+
+value top - top of the stack
+
+int size(); - returns size of stack
+
+- empty
+- size
+n back
+
+push_back
+pop_back
+
+//----------------------------------------------------------
+// queue
+//----------------------------------------------------------
+
+enqueue - at fron
+dequeue - at back
+
+- empty
+- size
+n front
+- back
+- push_back
+
+pop_front
+
+//----------------------------------------------------------
+// priority queue
+//----------------------------------------------------------
+
