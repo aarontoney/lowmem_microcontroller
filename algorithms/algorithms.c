@@ -60,10 +60,7 @@ unsigned char lmml_partition_array( char * ca,
 
     // Find the pivot index, pushing all values less than
     // the pivot value to the left of the pivot. 
-//	printf("\r\n[%d,%d]\r\n", li,ri); // baz
     while( li < ri ){
-//	printf("\t\t(%d,%d)\r\n", li,ri); // baz
-
 	// Extra checks needed to prevent roll over error - since
 	// the li and ri indexes are of an unsigned type.
 	while( (ca[li] < pv) && (li<(UNSIGNED_CHAR_MAX-1)) ){ li++; }
@@ -77,8 +74,6 @@ unsigned char lmml_partition_array( char * ca,
 	    li++;
 	    ri--;
 	}
-
-//	fflush(stdout); // baz
     }
 
     // Push the pivot value into the pivot index - we found
@@ -110,24 +105,14 @@ void lmml_quicksort_array_recursive( char * ca,
   	return;
         
 
-    printf("[ <%d,%d>",hi,ti); // baz
     fflush(stdout);
 
     unsigned char pivot_indy = lmml_partition_array( ca, hi, ti );
 
-    printf("("); // baz
-
     lmml_quicksort_array_recursive( ca, hi, pivot_indy-1 ); 
 
-    printf(")("); // baz
-
     lmml_quicksort_array_recursive( ca, pivot_indy, ti ); 
-
-    printf(")"); // baz
-    printf("]"); // baz
 }
-
-
 
 
 //------------------------------------------------------------------------------
