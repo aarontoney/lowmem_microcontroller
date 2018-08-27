@@ -89,8 +89,12 @@ unsigned char lmml_partition_array( char * ca,
 //------------------------------------------------------------------------------
 // quicksort
 //
-// WARNING!!! recersive is only here for comparison when I add the iterative 
-//            version. Dont use recersion on an embedded micro. 
+// The array is assumed to be zero based. The head value, hi, is the index of
+// the first element and the tail value, ti, is the index of the element after
+// last element. 
+//
+// So (hi == ti) represents either an empty list, or a list full to the point 
+// that it entirely fills without overflowing the underlying buffer. 
 //
 //------------------------------------------------------------------------------
 
@@ -110,65 +114,6 @@ void lmml_quicksort_array_recursive( char * ca,
     lmml_quicksort_array_recursive( ca, pivot_indy, ti ); 
 }
 
-
-//------------------------------------------------------------------------------
-// 
-//------------------------------------------------------------------------------
-
-//   123456789            (12345678)    skip: 8
-//  1234 5678 9          (1234)(5678)   skip: 4
-// 12 34 56 78 9       (12)(34)(56)(78) skip: 2
-
-// (12)(34)(56)(78)(9A)(BC)(DE)(F)
-// (1234)(5678)(9ABC)(DE)(F)
-// (12345678)(9ABC)(DE)(F)
-
-// len = 15
-// (123456789ABCDEF)                   0 - len
-// (1234567)(89ABCDEF)                 0 - (len/2), (len/2+1) - len
-// (123)(4567)(89AB)(CDEF)             0 - ((len/2)/2),  (((len/2)/2)+1) - (len/2), .... 
-// (1)(23)(45)(67)(89)(AB)(CD)(EF)
-
-// (12)(34)(56)(78)(9A)(BC)(DE)(F)
-
-// Non recersive version since in a low memory micronctonroller we dont have the space for stack rolling with recersion. 
-//  bool lmml_quicksort_array( char * ca, 
-//  			   unsigned char hi, 
-//  			   unsigned char ti ) 
-//  {
-//      if( (ca == NULL) || ((ti-hi) < 2) )
-//  	return;
-//  
-//      unsigned int skip = 2;
-//  
-//      // warning: check and cast here is to avoid rollover on unsigned types
-//      while( (skip < (hi-ti)) && (skip <= ((unsigned char)0x80)) ){
-//  
-//  	for( int i = 0; i<= (hi-ti); i+=skip ){
-//  	    lmml_partition_array( ca, i, (i+skip-1));
-//  	}
-//  	skip *= 2; 
-//      }
-//  
-//  }
-
-
-// bool lmml_quicksort_array( char *ca, 
-// 			   unsigned char hi, 
-// 			   unsigned char ti ) 
-// {
-//     if( (ca == NULL) || ((ti-hi) < 2) )
-// 	return;
-//     unsigned int skip = 2;
-// 
-//     // warning: check and cast here is to avoid rollover on unsigned types
-//     while( (skip < (hi-ti)) && (skip < ((unsigned char)0x80)) ){
-// 	for( unsigned char i = 0; i<= ((unsigned char)0xFF); i+=skip ){
-// 	    
-// 	}
-// 	skip *= 2; 
-//     }
-// }
 
 //------------------------------------------------------------------------------
 // Bubble Sort
