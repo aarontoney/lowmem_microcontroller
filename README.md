@@ -1,6 +1,6 @@
 # lowmem_microcontroller
 
-For low memory micro-controllers you sometimes only have very primitive tools availble. 
+<P>This library implements some useful data structures like lists, queues, and stacks for use on low memory microcontrollers.</P>
 
 <B>Who is this library is for?</B>
 
