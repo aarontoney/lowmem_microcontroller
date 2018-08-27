@@ -42,7 +42,7 @@
 #define setOverflow(curBuffer)  (curBuffer->state |= AL_STATE_OVERFLOW)
 #define setUnderflow(curBuffer) (curBuffer->state |= AL_STATE_UNDERFLOW)
 
-#define clrAllFlags(curBuffer)  (curBuffer->state = 0x00)
+#define clrAllFlags(curBuffer)  (curBuffer->state == 0x00)
 
 #define clrError(curBuffer)     (curBuffer->state &= ~AL_STATE_ERROR)
 #define clrOverflow(curBuffer)  (curBuffer->state &= ~AL_STATE_OVERFLOW)
