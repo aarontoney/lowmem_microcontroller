@@ -3,7 +3,7 @@
 //------------------------------------------------------------------------------
 //- File:   state.h
 //- Author: Aaron Toney
-//- Date:   August 26th, 2018
+//- Date:   August 22nd, 2018
 //- Verion: 0.1
 //- Revions:
 //- 
