@@ -89,12 +89,8 @@ unsigned char lmml_partition_array( char * ca,
 //------------------------------------------------------------------------------
 // quicksort
 //
-// The array is assumed to be zero based. The head value, hi, is the index of
-// the first element and the tail value, ti, is the index of the element after
-// last element. 
-//
-// So (hi == ti) represents either an empty list, or a list full to the point 
-// that it entirely fills without overflowing the underlying buffer. 
+// WARNING!!! recersive is only here for comparison when I add the iterative 
+//            version. Dont use recersion on an embedded micro. 
 //
 //------------------------------------------------------------------------------
 
