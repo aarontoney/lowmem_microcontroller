@@ -3,7 +3,7 @@
 //------------------------------------------------------------------------------
 //- File:   algorithms.h
 //- Author: Aaron Toney
-//- Date:   March 20th, 2018
+//- Date:   August 26th, 2018
 //- Verion: 0.1
 //- Revions:
 //- 
