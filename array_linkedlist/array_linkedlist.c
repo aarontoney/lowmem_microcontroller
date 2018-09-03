@@ -152,6 +152,36 @@ char lmmll_contains( lmm_linkedlist *curLinkedList,
 }
 
 //------------------------------------------------------------------------------
+// swap
+//
+// Note this only swaps the values of the cells, not their relative ordering
+// in the list. Its meant as a helper function to higher level sorting 
+// algorithms.
+//------------------------------------------------------------------------------
+
+char lmmll_swap( lmm_linkedlist *curLinkedList, 
+		 lmm_llcell *aPtr, lmm_llcell *bPtr )
+{
+    if( (curLinkedList == (lmm_linkedlist *)0 ) || 
+	(aPtr == (lmm_llcell *)0) ||
+	(bPtr   == (lmm_llcell *)0) ){
+	return(false);
+    }
+
+    unsigned char tmpc;
+    short tmps;
+    tmpc = aPtr->other;
+    aPtr->other = bPtr->other;
+    bPtr->other = tmpc;
+
+    tmps = aPtr->val;
+    aPtr->val = bPtr->val;
+    bPtr->val = tmps;
+
+    return( true ); 
+}
+
+//------------------------------------------------------------------------------
 // push_front
 //------------------------------------------------------------------------------
 
@@ -203,6 +233,7 @@ char lmmll_pop_front( lmm_linkedlist  *curLinkedList, lmm_llcell *val ){
 //********************************************************************************
 //**************************      Stuff to Add      ******************************
 //********************************************************************************
+
 
 //   //------------------------------------------------------------------------------
 //   // push_back

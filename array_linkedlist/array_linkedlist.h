@@ -26,7 +26,7 @@
 typedef struct lmm_linkedlist_cell_t {
     unsigned char next;
     unsigned char other; 
-    short int val; 
+    short val; 
 } lmm_llcell;
 
 typedef struct lmm_linkedlist_t {
@@ -54,6 +54,9 @@ char lmmll_peek_front( lmm_linkedlist *curLinkedList, lmm_llcell *retval );
 
 char lmmll_contains( lmm_linkedlist *curLinkedList, 
 		     unsigned char *pos, char oval, short sval );
+
+char lmmll_swap( lmm_linkedlist *curLinkedList, 
+		 lmm_llcell *aPtr, lmm_llcell *bPtr );
 
 //------------------------------------------------------------------
 // Prototypes - LinkedList
