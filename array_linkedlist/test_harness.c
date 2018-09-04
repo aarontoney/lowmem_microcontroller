@@ -64,6 +64,18 @@ void option_isEmpty( lmm_linkedlist *curList )
 }
 
 //--------------------------------------------------------------------
+// option_isFull
+//--------------------------------------------------------------------
+void option_isFull( lmm_linkedlist *curList )
+{
+    if( lmmll_isFull( curList ) ){
+	printf("\nLinkedlist is full\r\n");
+    }else{
+	printf("\nLinkedlist is not full\r\n");
+    }
+}
+
+//--------------------------------------------------------------------
 // option_peek_front
 //--------------------------------------------------------------------
 
@@ -151,6 +163,8 @@ void option_contains( lmm_linkedlist *curList )
     }
 }
 
+
+
 //--------------------------------------------------------------------
 // option_pop
 //
@@ -224,18 +238,19 @@ int main()
     printf("\nStarting....\n");
     
     while(loop){
-	printf("%s%s%s%s%s%s%s%s%s%s",
+	printf("%s%s%s%s%s%s%s%s%s%s%s",
 	       "\nPlease enter your selection \n",
 	       "1. clear\n",
 	       "2. size\n",
 	       "3. isEmpty\n",
+	       "4. isFull\n",
 
-	       "4. push_front\n",
-	       "5. pop_front\n",
+	       "5. push_front\n",
+	       "6. pop_front\n",
 
-	       "6. peek_front\n",
+	       "7. peek_front\n",
 
-	       "7. contains \n",
+	       "8. contains \n",
 
 //  Operations on back of the list, and get/set at expensive for sll
 //	       ". push_back\n",
@@ -243,7 +258,7 @@ int main()
 //	       ". lmmll_get at index\n",
 //	       ". lmmll_set at index\n",
 //	       ". option_peek_back",
-	       "8. Exit...\n",
+	       "9. Exit...\n",
 
 	       "Enter Choice: " );
 	
@@ -264,14 +279,18 @@ int main()
 		break;
 
 	    case 4:
-		option_push( &myLinkedList );
+		option_isFull( &myLinkedList );
 		break;
 
 	    case 5:
-		option_pop( &myLinkedList, pop_front );
+		option_push( &myLinkedList );
 		break;
 
 	    case 6:
+		option_pop( &myLinkedList, pop_front );
+		break;
+
+	    case 7:
 		option_peek_front( &myLinkedList );
 		break;
 
@@ -283,11 +302,11 @@ int main()
 //		option_gs( &myLinkedList, gs_set );
 //		break;
 
-	    case 7:
+	    case 8:
 		option_contains( &myLinkedList );
 		break;
 
-	    case 8:
+	    case 9:
 		loop = false;
 		break;
 		
