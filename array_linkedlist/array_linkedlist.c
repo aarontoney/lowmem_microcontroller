@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 //- File:   array_linkedlist.c
 //- Author: Aaron Toney
-//- Date:   March 25th, 2018
+//- Date:   August 27th, 2018
 //- Verion: 0.1
 //- Revions:
 //- 
@@ -97,6 +97,26 @@ unsigned char lmmll_size(lmm_linkedlist  *curLinkedList)
 char lmmll_isEmpty(lmm_linkedlist  *curLinkedList)
 {
     if( curLinkedList->size == 0 )
+	return( true );
+    return( false );
+}
+
+//------------------------------------------------------------------------------
+// isFull
+//
+// If there are no more additional free nodes in the freelist then the linked
+// list is "full". 
+//
+// Warning: This definition of "empty" and "full" holds across multiple lists 
+//          using the same free list so a list could be "empty" and full at the 
+//          same time - corresponding to the list being "empty", but there being
+//          no available memory in the free list. 
+//
+//------------------------------------------------------------------------------
+
+char lmmll_isFull(lmm_linkedlist  *curLinkedList)
+{
+    if( lmmfl_isEmpty( curLinkedList->freelist ) )
 	return( true );
     return( false );
 }

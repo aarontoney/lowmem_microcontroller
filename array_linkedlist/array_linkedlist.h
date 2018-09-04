@@ -48,15 +48,14 @@ char lmmll_init( lmm_linkedlist *curLinkedList,
 
 void lmmll_clear( lmm_linkedlist *curLinkedList );
 unsigned char lmmll_size(lmm_linkedlist  *curLinkedList );
+
 char lmmll_isEmpty(lmm_linkedlist  *curLinkedList );
+char lmmll_isFull(lmm_linkedlist  *curLinkedList);
 
 char lmmll_peek_front( lmm_linkedlist *curLinkedList, lmm_llcell *retval );
 
 char lmmll_contains( lmm_linkedlist *curLinkedList, 
 		     unsigned char *pos, char oval, short sval );
-
-char lmmll_swap( lmm_linkedlist *curLinkedList, 
-		 lmm_llcell *aPtr, lmm_llcell *bPtr );
 
 //------------------------------------------------------------------
 // Prototypes - LinkedList
@@ -68,6 +67,8 @@ char lmmll_pop_front( lmm_linkedlist  *curLinkedList, lmm_llcell *val );
 
 char lmmll_remove_at( lmm_linkedlist *curLinkedList, unsigned char pos );
 
+char lmmll_swap( lmm_linkedlist *curLinkedList, 
+		 lmm_llcell *aPtr, lmm_llcell *bPtr );
 
 //------------------------------------------------------------------------------
 #endif
