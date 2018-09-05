@@ -19,6 +19,7 @@
 #define true 1
 #define false 0
 
+
 //------------------------------------------------------------------
 // Datastructures
 //------------------------------------------------------------------
@@ -36,8 +37,15 @@ typedef struct lmm_linkedlist_t {
 
     unsigned char state;
     lmm_freelist *freelist;
+
     struct lmm_linkedlist_cell_t *buffer;
 } lmm_linkedlist;
+
+//------------------------------------------------------------------
+// Compairison Function Pointer 
+//------------------------------------------------------------------
+
+typedef char (*lmm_linkedlistCmpFn)(lmm_llcell *, lmm_llcell *); 
 
 //------------------------------------------------------------------
 // Prototypes - Common to both free an linked lists
@@ -61,6 +69,13 @@ char lmmll_contains( lmm_linkedlist *curLinkedList,
 // Prototypes - LinkedList
 //------------------------------------------------------------------
 char lmmll_push_front( lmm_linkedlist  *curLinkedList, char oval, short sval );
+
+
+// Using the supplied comparison function - promotes the head value to a 
+// new place where is is greater than the elements that come before it in
+// the list. 
+char lmmll_promote_head( lmm_linkedlist *curLinkedList, 
+			 lmm_linkedlistCmpFn cmpfn );
 
 //  void lmmll_push_back( lmm_linkedlist  *curLinkedList, char newVal );
 char lmmll_pop_front( lmm_linkedlist  *curLinkedList, lmm_llcell *val );

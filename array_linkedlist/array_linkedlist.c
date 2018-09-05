@@ -216,7 +216,6 @@ char lmmll_push_front( lmm_linkedlist  *curLinkedList, char oval, short sval ){
     if(! lmmll_alloc( curLinkedList->freelist, &newCellIndy ) )
 	return(false);
 
-    // only if there is already data in the list...
     (curLinkedList->buffer[newCellIndy]).next = curLinkedList->head;
     curLinkedList->head = newCellIndy;
 
@@ -250,10 +249,54 @@ char lmmll_pop_front( lmm_linkedlist  *curLinkedList, lmm_llcell *val ){
     return(true); 
 }
 
+//------------------------------------------------------------------------------
+// promote_head
+//
+// Uses the supplied comparison function to promotes the head value to a 
+// new place where is is less than or equal to the elements that come before 
+// it in the list. 
+//
+//------------------------------------------------------------------------------
+
+char lmmll_promote_head( lmm_linkedlist *curLinkedList, 
+			 lmm_linkedlistCmpFn cmpfn )
+{
+    if( (curLinkedList == (lmm_linkedlist *)0 ) ||
+	( cmpfn == 0) )
+	return( false );
+
+    if( curLinkedList->size == 0 )
+	return( false );
+
+    if( curLinkedList->size == 1 )
+	return( true );
+
+    unsigned char promoteNodeIndy = curLinkedList->head;
+    unsigned char curNodeIndy     = (curLinkedList->buffer[ promoteNodeIndy ]).next;
+    unsigned char prevNodeIndy    = promoteNodeIndy;
+
+    unsigned char cntdnSz = curLinkedList->size;
+    while( ( cntdnSz-- > 1 ) && 
+	   (cmpfn( &((curLinkedList->buffer)[ promoteNodeIndy ]), 
+		   &((curLinkedList->buffer)[ curNodeIndy ])) <= 0 ) ){
+
+	prevNodeIndy = curNodeIndy;
+	curNodeIndy  = ((curLinkedList->buffer)[curNodeIndy]).next;
+    }
+
+    if( prevNodeIndy == promoteNodeIndy )
+	return(true);
+
+    curLinkedList->head = (curLinkedList->buffer[promoteNodeIndy]).next;
+    (curLinkedList->buffer[promoteNodeIndy]).next = (curLinkedList->buffer[prevNodeIndy]).next;
+    (curLinkedList->buffer[prevNodeIndy]).next = promoteNodeIndy;    
+
+    return( true );
+}
+
 //********************************************************************************
 //**************************      Stuff to Add      ******************************
 //********************************************************************************
-
 
 //   //------------------------------------------------------------------------------
 //   // push_back
