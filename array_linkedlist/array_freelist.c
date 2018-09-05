@@ -58,13 +58,13 @@ char lmmll_alloc( lmm_freelist *curFreeList,
 {
     if( curFreeList == (lmm_freelist *)0 ){
 	*retCellIndy = 0; 
-	return( 0 );
+	return( false );
     }
 
 
     if( curFreeList->size == 0){
 	*retCellIndy = 0; 
-	return( 0 );
+	return( false );
     }
 
     // size check to implictly provides a ->next != 0 state
