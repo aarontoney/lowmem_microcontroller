@@ -11,11 +11,6 @@
 //- package. Insertion is sorted - so worst case O(N), while removing elemnts
 //- O(1) as expected. 
 //-
-//-
-//- WARNING: this library works directly with the internal state of its 
-//-          underlying linked list. It was a choice made for optimization, but
-//-          dont copy the implementation used here in _push(). 
-//-
 //------------------------------------------------------------------------------
 
 #include "all_pqueue.h"
