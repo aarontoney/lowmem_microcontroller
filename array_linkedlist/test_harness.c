@@ -192,6 +192,32 @@ void option_pop( lmm_linkedlist *curLinkedList, pop_op op)
 
 }
 
+
+//--------------------------------------------------------------------
+// option_promote_head
+//
+// used to implement code reuse for pop tests like pop_front, and pop_back
+//--------------------------------------------------------------------
+
+// Comparison function used by partition to create partition
+char cmp_altb( lmm_llcell *c1, lmm_llcell *c2 ){
+    if( c1->val < c2->val)
+     	return( -1 );
+
+    if( c1->val == c2->val)
+	return( 0 );
+
+    return( 1 );
+}
+
+char option_promote_head( lmm_linkedlist *curLinkedList ) 
+{
+    if( ! lmmll_promote_head( curLinkedList, cmp_altb ) )
+	return(false);
+
+    return(true);
+}
+
 //------------------------------------------------------------------------------
 // Main
 //------------------------------------------------------------------------------
@@ -238,7 +264,7 @@ int main()
     printf("\nStarting....\n");
     
     while(loop){
-	printf("%s%s%s%s%s%s%s%s%s%s%s",
+	printf("%s%s%s%s%s%s%s%s%s%s%s%s",
 	       "\nPlease enter your selection \n",
 	       "1. clear\n",
 	       "2. size\n",
@@ -251,6 +277,7 @@ int main()
 	       "7. peek_front\n",
 
 	       "8. contains \n",
+	       "9. promote head \n",
 
 //  Operations on back of the list, and get/set at expensive for sll
 //	       ". push_back\n",
@@ -258,7 +285,7 @@ int main()
 //	       ". lmmll_get at index\n",
 //	       ". lmmll_set at index\n",
 //	       ". option_peek_back",
-	       "9. Exit...\n",
+	       "10. Exit...\n",
 
 	       "Enter Choice: " );
 	
@@ -307,6 +334,10 @@ int main()
 		break;
 
 	    case 9:
+		option_promote_head( &myLinkedList );
+		break;
+
+	    case 10:
 		loop = false;
 		break;
 		
