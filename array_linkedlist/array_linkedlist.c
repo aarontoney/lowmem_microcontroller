@@ -41,7 +41,8 @@ char lmmll_init( lmm_linkedlist *curLinkedList,
 	return(false);
 
     curLinkedList->size = 0;
-    curLinkedList->head = 0;
+    curLinkedList->head = FREE_LIST_SENTINEL;
+    curLinkedList->tail = FREE_LIST_SENTINEL;
 
     clrAllFlags( curLinkedList );
 
@@ -79,6 +80,8 @@ void lmmll_clear( lmm_linkedlist *curLinkedList ){
 	lmmll_return( curLinkedList->freelist, curCellIndy );
 	curLinkedList->size--;
     }
+
+    curLinkedList->tail = FREE_LIST_SENTINEL;
 }
 
 //------------------------------------------------------------------------------
@@ -134,6 +137,23 @@ char lmmll_peek_front( lmm_linkedlist *curLinkedList, lmm_llcell *retval )
 	return(false);
 
     *retval = (curLinkedList->buffer[curLinkedList->head]);
+
+    return(true);
+}
+
+//------------------------------------------------------------------------------
+// peek_back
+//------------------------------------------------------------------------------
+
+char lmmll_peek_back( lmm_linkedlist *curLinkedList, lmm_llcell *retval )
+{
+    if(curLinkedList == (lmm_linkedlist *)0)
+	return(false);
+
+    if(curLinkedList->size == 0 )
+	return(false);
+
+    *retval = (curLinkedList->buffer[curLinkedList->tail]);
 
     return(true);
 }
@@ -203,6 +223,8 @@ char lmmll_swap( lmm_linkedlist *curLinkedList,
 
 //------------------------------------------------------------------------------
 // push_front
+//
+// Note: A push on empty list sets both head and tail. 
 //------------------------------------------------------------------------------
 
 char lmmll_push_front( lmm_linkedlist  *curLinkedList, char oval, short sval ){
@@ -222,6 +244,10 @@ char lmmll_push_front( lmm_linkedlist  *curLinkedList, char oval, short sval ){
     (curLinkedList->buffer[newCellIndy]).other = oval;
     (curLinkedList->buffer[newCellIndy]).val   = sval;
 
+    if( curLinkedList->size == 0 ){
+	curLinkedList->tail = newCellIndy;
+    }
+
     curLinkedList->size++;
 
     return(true);
@@ -229,8 +255,6 @@ char lmmll_push_front( lmm_linkedlist  *curLinkedList, char oval, short sval ){
 
 //------------------------------------------------------------------------------
 // pop_front
-//
-// Warning - popping clears underflow as well as full flags. 
 //------------------------------------------------------------------------------
 
 char lmmll_pop_front( lmm_linkedlist  *curLinkedList, lmm_llcell *val ){
@@ -246,8 +270,42 @@ char lmmll_pop_front( lmm_linkedlist  *curLinkedList, lmm_llcell *val ){
 
     lmmll_return( curLinkedList->freelist, curCellIndy );
     curLinkedList->size--;
+
+    if( curLinkedList->size == 0 ){
+	curLinkedList->tail = FREE_LIST_SENTINEL;
+    }
+
     return(true); 
 }
+
+//------------------------------------------------------------------------------
+// push_back
+//------------------------------------------------------------------------------
+
+char lmmll_push_back( lmm_linkedlist *curLinkedList){
+    if( curLinkedList == (lmm_linkedlist *)0 )
+	return(false);
+
+    unsigned char newCellIndy;
+
+    if(! lmmll_alloc( curLinkedList->freelist, &newCellIndy ) )
+	return(false);
+
+    (curLinkedList->buffer[ newCellIndy ]).next = FREE_LIST_SENTINEL;
+
+    if( curLinkedList->size == 0 ){
+	curLinkedList->head = newCellIndy;
+	curLinkedList->tail = newCellIndy;
+    }else{
+	(curLinkedList->buffer[ curLinkedList->tail ]).next = newCellIndy;
+	curLinkedList->tail = newCellIndy;
+    }
+
+    curLinkedList->size++;
+
+    return(true); 
+}
+
 
 //------------------------------------------------------------------------------
 // promote_head
@@ -294,17 +352,31 @@ char lmmll_promote_head( lmm_linkedlist *curLinkedList,
     return( true );
 }
 
+
+//   //------------------------------------------------------------------------------
+//   // find_previous
+//   //------------------------------------------------------------------------------
+//   
+//   char lmmll_find_previous( lmm_linkedlist *curLinkedList, 
+//   			  unsigned char searchNodeIndy, 
+//   			  unsigned char *prevNodeIndy )
+//   {
+//       if( curLInkedList == 0 || searchNodeIndy == FREE_LIST_SENTINEL )
+//   	return( false ); 
+//   
+//       *prevNodeInd = prevLinkedList->head;
+//       while( (prevNodeIndy != FREE_LIST_SENTINEL)  && 
+//   	   ((prevLinkedList->buffer)[prevNodeIndy].next != searchNodeIndy ) ){
+//   	prevNodeIndy = (prevLinkedList->buffer)[prevNodeIndy].next;
+//       }
+//   
+//       return( prevNodeIndy );
+//   }
+
 //********************************************************************************
 //**************************      Stuff to Add      ******************************
 //********************************************************************************
 
-//   //------------------------------------------------------------------------------
-//   // push_back
-//   //------------------------------------------------------------------------------
-//   void lmmll_push_back( lmm_linkedlist  *curLinkedList, char newVal ){ 
-//     return(false); 
-//   }
-//
 //   //------------------------------------------------------------------------------
 //   // remove_at
 //   //------------------------------------------------------------------------------
