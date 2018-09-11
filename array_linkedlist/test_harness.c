@@ -91,9 +91,24 @@ void option_peek_front( lmm_linkedlist *curList )
 }
 
 //--------------------------------------------------------------------
-// option_push
+// option_peek_back
 //--------------------------------------------------------------------
-void option_push( lmm_linkedlist *curLinkedList )
+
+void option_peek_back( lmm_linkedlist *curList )
+{
+    lmm_llcell peekval;
+
+    if( lmmll_peek_back( curList, &peekval )){
+	printf("\nBack value is: %d\r\n", peekval.val );	
+    }else{
+	printf("\nFailed to peek at the back of the list.\r\n");
+    }
+}
+
+//--------------------------------------------------------------------
+// option_push_front
+//--------------------------------------------------------------------
+void option_push_front( lmm_linkedlist *curLinkedList )
 {
     int number;
     
@@ -110,30 +125,25 @@ void option_push( lmm_linkedlist *curLinkedList )
     }
 }
 
-//   //--------------------------------------------------------------------
-//   // option_peek_back
-//   //--------------------------------------------------------------------
-//   
-//   void option_peek_back( lmm_linkedlist *curList )
-//   {
-//
-//   }
-//
-//   //--------------------------------------------------------------------
-//   // option_push_back
-//   //--------------------------------------------------------------------
-//   void option_push_back( lmm_linkedlist *curList )
-//   {
-//       int number;
-//   
-//       fflush(stdin);
-//       printf("\nPlease enter the number to push_back: ");
-//       scanf("%d", &number);
-//       
-//       // turn the number to 0..9
-//       number %= 10;
-//       // Add code pushing number to the back of the list here
-//   }
+//--------------------------------------------------------------------
+// option_push_back
+//--------------------------------------------------------------------
+void option_push_back( lmm_linkedlist *curLinkedList )
+{
+    int number;
+    
+    fflush(stdin);
+    printf("\nPlease enter the number to push_back: ");
+    scanf("%d", &number);
+    
+    // turn the number to 0..9
+    number %= 10;
+
+    // Add code pushing number to the back of the list here
+    if( ! lmmll_push_back( curLinkedList, 0, ((short)number)) ){
+	printf("Error pushing value to back of the list...\r\n");
+    }
+}
 
 //--------------------------------------------------------------------
 // option_contains
@@ -221,6 +231,7 @@ char option_promote_head( lmm_linkedlist *curLinkedList )
 //------------------------------------------------------------------------------
 // Main
 //------------------------------------------------------------------------------
+
 int main()
 {
     //--------------------------------------------------
@@ -264,7 +275,7 @@ int main()
     printf("\nStarting....\n");
     
     while(loop){
-	printf("%s%s%s%s%s%s%s%s%s%s%s%s",
+	printf("%s%s%s%s%s%s%s%s%s%s%s%s%s%s",
 	       "\nPlease enter your selection \n",
 	       "1. clear\n",
 	       "2. size\n",
@@ -272,20 +283,21 @@ int main()
 	       "4. isFull\n",
 
 	       "5. push_front\n",
-	       "6. pop_front\n",
+	       "6. push_back\n",
+	       "7. pop_front\n",
 
-	       "7. peek_front\n",
-
-	       "8. contains \n",
-	       "9. promote head \n",
+	       "8. peek_front\n",
+	       "9. peek_back\n",
+	       "10. contains \n",
+	       "11. promote head \n",
 
 //  Operations on back of the list, and get/set at expensive for sll
-//	       ". push_back\n",
 //	       ". pop_back\n",
 //	       ". lmmll_get at index\n",
 //	       ". lmmll_set at index\n",
 //	       ". option_peek_back",
-	       "10. Exit...\n",
+
+	       "12. Exit...\n",
 
 	       "Enter Choice: " );
 	
@@ -310,15 +322,23 @@ int main()
 		break;
 
 	    case 5:
-		option_push( &myLinkedList );
+		option_push_front( &myLinkedList );
 		break;
 
 	    case 6:
-		option_pop( &myLinkedList, pop_front );
+		option_push_back( &myLinkedList );
 		break;
 
 	    case 7:
+		option_pop( &myLinkedList, pop_front );
+		break;
+
+	    case 8:
 		option_peek_front( &myLinkedList );
+		break;
+
+	    case 9:
+		option_peek_back( &myLinkedList );
 		break;
 
 //	    case :
@@ -329,15 +349,15 @@ int main()
 //		option_gs( &myLinkedList, gs_set );
 //		break;
 
-	    case 8:
+	    case 10:
 		option_contains( &myLinkedList );
 		break;
 
-	    case 9:
+	    case 11:
 		option_promote_head( &myLinkedList );
 		break;
 
-	    case 10:
+	    case 12:
 		loop = false;
 		break;
 		
