@@ -13,10 +13,10 @@
 //- 
 //------------------------------------------------------------------------------
 
-// Maximum size of the free list is 0XFFFF, but it is zero based so the maximum
-// range for valid indexes is 0x0000 to 0xFFFE. The value of 0xFFFF is reserved
+// Maximum size of the free list is 0XFF, but it is zero based so the maximum
+// range for valid indexes is 0x00 to 0xFE. The value of 0xFFFF is reserved
 // as a sentinel value. 
-#define FREE_LIST_SENTINEL 0xFFFF
+#define FREE_LIST_SENTINEL ((unsigned char)0xFF)
 
 //------------------------------------------------------------------
 // Datastructures
