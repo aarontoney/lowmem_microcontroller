@@ -19,7 +19,7 @@
 
 #include "array_linkedlist.h"
 
-#define DEBUGGING_OUTPUT
+// #define DEBUGGING_OUTPUT
 
 #ifdef DEBUGGING_OUTPUT
 #include "stdio.h" // remove post debugging - just needed for printf. 
