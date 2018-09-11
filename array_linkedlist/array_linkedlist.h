@@ -19,7 +19,6 @@
 #define true 1
 #define false 0
 
-
 //------------------------------------------------------------------
 // Datastructures
 //------------------------------------------------------------------
@@ -34,6 +33,7 @@ typedef struct lmm_linkedlist_t {
     unsigned char size; 
 
     unsigned char head;
+    unsigned char tail;
 
     unsigned char state;
     lmm_freelist *freelist;
@@ -61,6 +61,7 @@ char lmmll_isEmpty(lmm_linkedlist  *curLinkedList );
 char lmmll_isFull(lmm_linkedlist  *curLinkedList);
 
 char lmmll_peek_front( lmm_linkedlist *curLinkedList, lmm_llcell *retval );
+char lmmll_peek_back( lmm_linkedlist *curLinkedList, lmm_llcell *retval );
 
 char lmmll_contains( lmm_linkedlist *curLinkedList, 
 		     unsigned char *pos, char oval, short sval );
@@ -68,7 +69,8 @@ char lmmll_contains( lmm_linkedlist *curLinkedList,
 //------------------------------------------------------------------
 // Prototypes - LinkedList
 //------------------------------------------------------------------
-char lmmll_push_front( lmm_linkedlist  *curLinkedList, char oval, short sval );
+char lmmll_push_front( lmm_linkedlist  *curLinkedList, unsigned char oval, short sval );
+char lmmll_push_back( lmm_linkedlist  *curLinkedList, unsigned char oval, short sval );
 
 
 // Using the supplied comparison function - promotes the head value to a 
@@ -79,6 +81,12 @@ char lmmll_promote_head( lmm_linkedlist *curLinkedList,
 
 //  void lmmll_push_back( lmm_linkedlist  *curLinkedList, char newVal );
 char lmmll_pop_front( lmm_linkedlist  *curLinkedList, lmm_llcell *val );
+
+
+// Implemented - but commented out until needed. 
+// char lmmll_find_previous( lmm_linkedlist *curLinkedList, 
+//	 		     unsigned char searchNodeIndy, 
+//  			     unsigned char *prevNodeIndy );
 
 char lmmll_remove_at( lmm_linkedlist *curLinkedList, unsigned char pos );
 

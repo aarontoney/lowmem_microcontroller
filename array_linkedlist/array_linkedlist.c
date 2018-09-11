@@ -227,7 +227,7 @@ char lmmll_swap( lmm_linkedlist *curLinkedList,
 // Note: A push on empty list sets both head and tail. 
 //------------------------------------------------------------------------------
 
-char lmmll_push_front( lmm_linkedlist  *curLinkedList, char oval, short sval ){
+char lmmll_push_front( lmm_linkedlist  *curLinkedList, unsigned char oval, short sval ){
 
     if( curLinkedList == (lmm_linkedlist *)0 ){
 	return(false);
@@ -281,7 +281,7 @@ char lmmll_pop_front( lmm_linkedlist  *curLinkedList, lmm_llcell *val ){
 //------------------------------------------------------------------------------
 // push_back
 //------------------------------------------------------------------------------
-char lmmll_push_back( lmm_linkedlist  *curLinkedList, char oval, short sval ){
+char lmmll_push_back( lmm_linkedlist  *curLinkedList, unsigned char oval, short sval ){
     if( curLinkedList == (lmm_linkedlist *)0 )
 	return(false);
 
