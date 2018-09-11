@@ -11,7 +11,6 @@
 //- to provides dynamic memory pool, for use on embedded systems without memory 
 //- management kernel primitives like mallor/free. 
 //- 
-//- 
 //------------------------------------------------------------------------------
 
 #include "array_linkedlist.h"
@@ -30,8 +29,8 @@ void lmmll_init_freelist( lmm_freelist *curFreeList,
 {
     curFreeList->max_size = max_buff_size;
 
-    curFreeList->size = curFreeList->max_size;
-    curFreeList->head = 0; 
+    curFreeList->size     = curFreeList->max_size;
+    curFreeList->head     = FREE_LIST_SENTINEL; 
 
     curFreeList->buffer   = buff;
 
@@ -61,7 +60,6 @@ char lmmll_alloc( lmm_freelist *curFreeList,
 	return( false );
     }
 
-
     if( curFreeList->size == 0){
 	*retCellIndy = 0; 
 	return( false );
@@ -73,7 +71,7 @@ char lmmll_alloc( lmm_freelist *curFreeList,
     curFreeList->size--;
 
     // Zero out the cell before we return it
-    (curFreeList->buffer[(*retCellIndy)]).next = 0;
+    (curFreeList->buffer[(*retCellIndy)]).next = FREE_LIST_SENTINEL;
     (curFreeList->buffer[(*retCellIndy)]).other = 0;
     (curFreeList->buffer[(*retCellIndy)]).val = 0;
     
