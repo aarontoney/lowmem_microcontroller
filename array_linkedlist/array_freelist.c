@@ -15,6 +15,12 @@
 
 #include "array_linkedlist.h"
 
+// #define DEBUGGING_OUTPUT
+
+#ifdef DEBUGGING_OUTPUT
+#include "stdio.h" // remove post debugging - just needed for printf. 
+#endif
+
 //---------------------------------------------------------------
 // init
 //
@@ -30,7 +36,7 @@ void lmmll_init_freelist( lmm_freelist *curFreeList,
     curFreeList->max_size = max_buff_size;
 
     curFreeList->size     = curFreeList->max_size;
-    curFreeList->head     = FREE_LIST_SENTINEL; 
+    curFreeList->head     = 0;
 
     curFreeList->buffer   = buff;
 
@@ -40,7 +46,7 @@ void lmmll_init_freelist( lmm_freelist *curFreeList,
 	(curFreeList->buffer[i]).other  = 0;
 	(curFreeList->buffer[i]).val = 0;
     }
-    (curFreeList->buffer[ curFreeList->max_size-1 ]).next = 0;
+    (curFreeList->buffer[ curFreeList->max_size-1 ]).next = FREE_LIST_SENTINEL;
 } 
 
 //---------------------------------------------------------------
@@ -105,7 +111,6 @@ char lmmll_return( lmm_freelist *curFreeList,
 
     return(true);
 }
-
 
 //------------------------------------------------------------------------------
 // size
