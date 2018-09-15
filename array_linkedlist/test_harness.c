@@ -183,11 +183,9 @@ void option_contains( lmm_linkedlist *curList )
 
 void option_pop( lmm_linkedlist *curLinkedList, pop_op op)
 {
-    lmm_llcell val;
-
     switch( op ){
     case pop_front:
-	lmmll_pop_front(curLinkedList, &val);
+	lmmll_pop_front(curLinkedList);
 	break;
 
 //    case pop_back:

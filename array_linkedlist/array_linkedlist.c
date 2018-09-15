@@ -25,7 +25,6 @@
 #include "stdio.h" // remove post debugging - just needed for printf. 
 #endif
 
-
 //------------------------------------------------------------------------------
 // init
 //
@@ -257,7 +256,7 @@ char lmmll_push_front( lmm_linkedlist  *curLinkedList, unsigned char oval, short
 // pop_front
 //------------------------------------------------------------------------------
 
-char lmmll_pop_front( lmm_linkedlist  *curLinkedList, lmm_llcell *val ){
+char lmmll_pop_front( lmm_linkedlist  *curLinkedList ){
     if( curLinkedList == (lmm_linkedlist *)0 )
 	return(false);
 
@@ -266,7 +265,6 @@ char lmmll_pop_front( lmm_linkedlist  *curLinkedList, lmm_llcell *val ){
 
     unsigned char curCellIndy = curLinkedList->head;
     curLinkedList->head = (curLinkedList->buffer[curLinkedList->head]).next;
-    (*val) = (curLinkedList->buffer[curCellIndy]);
 
     lmmll_return( curLinkedList->freelist, curCellIndy );
     curLinkedList->size--;

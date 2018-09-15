@@ -80,7 +80,7 @@ char lmmll_promote_head( lmm_linkedlist *curLinkedList,
 			 lmm_linkedlistCmpFn cmpfn );
 
 //  void lmmll_push_back( lmm_linkedlist  *curLinkedList, char newVal );
-char lmmll_pop_front( lmm_linkedlist  *curLinkedList, lmm_llcell *val );
+char lmmll_pop_front( lmm_linkedlist  *curLinkedList );
 
 
 // Implemented - but commented out until needed. 
