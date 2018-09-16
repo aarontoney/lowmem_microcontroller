@@ -49,7 +49,7 @@ char lmmll_alloc( lmm_freelist *curFreeList,
 		  unsigned char *retCellIndy );
 
 
-char lmmll_return( lmm_freelist *curFreeList, 
+ char lmmll_return( lmm_freelist *curFreeList, 
 		   unsigned char retCellIndy );
 
 

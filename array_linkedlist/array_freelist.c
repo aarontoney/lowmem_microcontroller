@@ -132,3 +132,15 @@ char lmmfl_isEmpty(lmm_freelist  *curFreeList)
     return( false );
 }
 
+//------------------------------------------------------------------------------
+// isFull
+//------------------------------------------------------------------------------
+
+char lmmfl_isFull(lmm_freelist  *curFreeList)
+{
+    if( curFreeList->size == curFreeList->max_size )
+	return( true );
+
+    return( false );
+}
+
