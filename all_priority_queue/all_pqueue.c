@@ -169,7 +169,7 @@ char lmmpq_pop( lmm_pqueue  *curPQueue, lmm_llcell *val ){
     if( curPQueue == (lmm_pqueue *)0 )
 	return(false);
 
-    if(!  lmmll_pop_front( &(curPQueue->pqlist), val ) )
+    if(!  lmmll_pop_front( &(curPQueue->pqlist)) )
 	return(false);
 
     return( true);
