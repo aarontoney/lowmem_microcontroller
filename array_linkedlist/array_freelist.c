@@ -125,7 +125,7 @@ unsigned char lmmfl_size(lmm_freelist  *curFreeList)
 // isEmpty
 //------------------------------------------------------------------------------
 
-char lmmfl_isEmpty(lmm_freelist  *curFreeList)
+char lmmfl_isFull(lmm_freelist  *curFreeList)
 {
     if( curFreeList->size == 0)
 	return( true );
@@ -136,7 +136,7 @@ char lmmfl_isEmpty(lmm_freelist  *curFreeList)
 // isFull
 //------------------------------------------------------------------------------
 
-char lmmfl_isFull(lmm_freelist  *curFreeList)
+char lmmfl_isEmpty(lmm_freelist  *curFreeList)
 {
     if( curFreeList->size == curFreeList->max_size )
 	return( true );
