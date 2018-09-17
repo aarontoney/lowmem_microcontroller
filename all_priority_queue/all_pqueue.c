@@ -21,7 +21,6 @@
 #include "stdio.h" // remove post debugging - just needed for printf. 
 #endif
 
-
 // is_empty: check whether the queue has no elements.
 
 // insert_with_priority: add an element to the queue with an associated priority.
@@ -40,7 +39,7 @@ char default_cell_lt( lmm_llcell *c1, lmm_llcell *c2 ){
     if( c1->other < c2->other)
      	return( -1 );
 
-    if( c1->val == c2->val)
+    if( c1->other == c2->other)
 	return( 0 );
 
     return( 1 );
@@ -50,7 +49,7 @@ char default_cell_gt( lmm_llcell *c1, lmm_llcell *c2 ){
     if( c1->other > c2->other)
      	return( -1 );
 
-    if( c1->val == c2->val)
+    if( c1->other == c2->other)
 	return( 0 );
 
     return( 1 );
