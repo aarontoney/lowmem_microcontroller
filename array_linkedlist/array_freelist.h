@@ -41,15 +41,15 @@ typedef struct lmm_freelist_t{
 // Prototypes - FreeList
 //------------------------------------------------------------------
 
-void lmmll_init_freelist( lmm_freelist *curFreeList,
+void lmmfl_init_freelist( lmm_freelist *curFreeList,
 			  unsigned short max_buff_size, 
 			  lmm_flcell *buff );
 
-char lmmll_alloc( lmm_freelist *curFreeList,
+char lmmfl_alloc( lmm_freelist *curFreeList,
 		  unsigned char *retCellIndy );
 
 
- char lmmll_return( lmm_freelist *curFreeList, 
+ char lmmfl_return( lmm_freelist *curFreeList, 
 		   unsigned char retCellIndy );
 
 

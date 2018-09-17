@@ -29,7 +29,7 @@
 //       free.
 //---------------------------------------------------------------
 
-void lmmll_init_freelist( lmm_freelist *curFreeList, 
+void lmmfl_init_freelist( lmm_freelist *curFreeList, 
 			  unsigned short max_buff_size, 
 			  lmm_flcell *buff )
 {
@@ -50,7 +50,7 @@ void lmmll_init_freelist( lmm_freelist *curFreeList,
 } 
 
 //---------------------------------------------------------------
-// lmmll_alloc
+// lmmfl_alloc
 //
 // Requests a linked list cell from the free list. Notice we are
 // being given an index into the free list, and not a pointer, 
@@ -58,8 +58,11 @@ void lmmll_init_freelist( lmm_freelist *curFreeList,
 //
 //---------------------------------------------------------------
 
-char lmmll_alloc( lmm_freelist *curFreeList,
-		  unsigned char *retCellIndy )
+char lmmfl_alloc( lmm_freelist *curFreeList,
+		  unsigned char *retCellIndy,
+		  unsigned char c_next,
+		  unsigned char c_other,
+		  short c_val )
 {
     if( curFreeList == (lmm_freelist *)0 ){
 	*retCellIndy = 0; 
@@ -86,13 +89,13 @@ char lmmll_alloc( lmm_freelist *curFreeList,
 
 
 //---------------------------------------------------------------
-// lmmll_return
+// lmmfl_return
 //
 // Returns an alloced linked list cell from the free list. Not 
 // calling it free to avoid confusing people. 
 //---------------------------------------------------------------
 
-char lmmll_return( lmm_freelist *curFreeList, 
+char lmmfl_return( lmm_freelist *curFreeList, 
 		   unsigned char retCellIndy )
 {
     if( curFreeList == (lmm_freelist *)0 )
