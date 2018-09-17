@@ -82,7 +82,7 @@ char lmmfl_alloc( lmm_freelist *curFreeList,
     // Zero out the cell before we return it
     (curFreeList->buffer[(*retCellIndy)]).next = c_next; 
     (curFreeList->buffer[(*retCellIndy)]).other = c_other;
-    (curFreeList->buffer[(*retCellIndy)]).val = c_val0;
+    (curFreeList->buffer[(*retCellIndy)]).val = c_val;
     
     return( true );
 }
