@@ -80,9 +80,9 @@ char lmmfl_alloc( lmm_freelist *curFreeList,
     curFreeList->size--;
 
     // Zero out the cell before we return it
-    (curFreeList->buffer[(*retCellIndy)]).next = FREE_LIST_SENTINEL;
-    (curFreeList->buffer[(*retCellIndy)]).other = 0;
-    (curFreeList->buffer[(*retCellIndy)]).val = 0;
+    (curFreeList->buffer[(*retCellIndy)]).next = c_next; 
+    (curFreeList->buffer[(*retCellIndy)]).other = c_other;
+    (curFreeList->buffer[(*retCellIndy)]).val = c_val0;
     
     return( true );
 }

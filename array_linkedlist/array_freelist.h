@@ -46,12 +46,13 @@ void lmmfl_init_freelist( lmm_freelist *curFreeList,
 			  lmm_flcell *buff );
 
 char lmmfl_alloc( lmm_freelist *curFreeList,
-		  unsigned char *retCellIndy );
-
+		  unsigned char *retCellIndy, 
+		  unsigned char c_next,
+		  unsigned char c_other,
+		  short c_val );
 
  char lmmfl_return( lmm_freelist *curFreeList, 
 		   unsigned char retCellIndy );
-
 
 //------------------------------------------------------------------
 // Prototypes - Common to both free an linked lists
