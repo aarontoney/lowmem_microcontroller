@@ -131,15 +131,3 @@ void print_state_from_ll_flags( lmm_linkedlist *curList )
     if( isOverflow(curList)  ) { printf("Overflow flag set.\r\n");  }
     if( isUnderflow(curList) ) { printf("Underflow flag set.\r\n"); }
 }
-
-//--------------------------------------------------------------------
-// fill_list_with_rand_values
-//--------------------------------------------------------------------
-
- void fill_buffer_with_rand_values( lmm_list *curList, unsigned char bmaxval ){
-    for( int i=0; (i<curList->max_size); i++ ){
-	lmml_push_back( curList, 
-			((unsigned char) (rand()%(bmaxval+1)) ) );
-    }
-}
-
