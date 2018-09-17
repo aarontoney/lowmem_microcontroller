@@ -238,7 +238,7 @@ int main()
     lmm_freelist myFreeList;
     lmm_flcell myFreeListBuff[FREE_LIST_BUFF_SIZE];
 
-    lmmll_init_freelist( &myFreeList,
+    lmmfl_init_freelist( &myFreeList,
 			 FREE_LIST_BUFF_SIZE, myFreeListBuff );
 
     //--------------------------------------------------
@@ -264,7 +264,7 @@ int main()
     // Seed the random function
     srand(time(NULL));   
     
-    lmmll_init_freelist( &myFreeList,
+    lmmfl_init_freelist( &myFreeList,
 			 MAX_LIST_SIZE,
 			 myListBuff );
 
