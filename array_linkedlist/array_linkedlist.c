@@ -76,7 +76,7 @@ void lmmll_clear( lmm_linkedlist *curLinkedList ){
 
 	curLinkedList->head = (curLinkedList->buffer[curLinkedList->head]).next;
 
-	lmmll_return( curLinkedList->freelist, curCellIndy );
+	lmmfl_return( curLinkedList->freelist, curCellIndy );
 	curLinkedList->size--;
     }
 
@@ -234,14 +234,11 @@ char lmmll_push_front( lmm_linkedlist  *curLinkedList, unsigned char oval, short
 
     unsigned char newCellIndy;
 
-    if(! lmmll_alloc( curLinkedList->freelist, &newCellIndy ) )
+    if(! lmmfl_alloc( curLinkedList->freelist, &newCellIndy, 
+		      curLinkedList->head, oval, sval ) )
 	return(false);
 
-    (curLinkedList->buffer[newCellIndy]).next = curLinkedList->head;
     curLinkedList->head = newCellIndy;
-
-    (curLinkedList->buffer[newCellIndy]).other = oval;
-    (curLinkedList->buffer[newCellIndy]).val   = sval;
 
     if( curLinkedList->size == 0 ){
 	curLinkedList->tail = newCellIndy;
@@ -266,7 +263,7 @@ char lmmll_pop_front( lmm_linkedlist  *curLinkedList ){
     unsigned char curCellIndy = curLinkedList->head;
     curLinkedList->head = (curLinkedList->buffer[curLinkedList->head]).next;
 
-    lmmll_return( curLinkedList->freelist, curCellIndy );
+    lmmfl_return( curLinkedList->freelist, curCellIndy );
     curLinkedList->size--;
 
     if( curLinkedList->size == 0 ){
@@ -285,12 +282,10 @@ char lmmll_push_back( lmm_linkedlist  *curLinkedList, unsigned char oval, short 
 
     unsigned char newCellIndy;
 
-    if(! lmmll_alloc( curLinkedList->freelist, &newCellIndy ) )
+    if(! lmmfl_alloc( curLinkedList->freelist, &newCellIndy,
+		      FREE_LIST_SENTINEL,
+		      oval, sval ) )
 	return(false);
-
-    (curLinkedList->buffer[ newCellIndy ]).next = FREE_LIST_SENTINEL;
-    (curLinkedList->buffer[newCellIndy]).other = oval;
-    (curLinkedList->buffer[newCellIndy]).val   = sval;
 
     if( curLinkedList->size == 0 ){
 	curLinkedList->head = newCellIndy;
