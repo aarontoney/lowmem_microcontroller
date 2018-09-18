@@ -74,7 +74,7 @@ char lmmfl_alloc( lmm_freelist *curFreeList,
 	return( false );
     }
 
-    // size check to implictly provides a ->next != 0 state
+    // size check implictly provides a ->next != 0 state
     (*retCellIndy) = curFreeList->head;
     curFreeList->head = (curFreeList->buffer[curFreeList->head]).next;
     curFreeList->size--;
