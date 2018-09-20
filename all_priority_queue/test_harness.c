@@ -96,7 +96,10 @@ void option_push( lmm_pqueue *curLinkedList )
     // Add code pushing number to the back of the list here
     if( ! lmmpq_push( curLinkedList, ((short)number), ((short)number)) ){
 	printf("Error pushing value to front of the queue...\r\n");
+    }else{
+	printf("Pushed value (%d) to pqueue...\r\n", number);
     }
+
 }
 
 //--------------------------------------------------------------------
@@ -167,7 +170,7 @@ int main()
     lmm_freelist myFreeList;
     lmm_flcell myFreeListBuff[FREE_LIST_BUFF_SIZE];
 
-    lmmll_init_freelist( &myFreeList,
+    lmmfl_init_freelist( &myFreeList,
 			 FREE_LIST_BUFF_SIZE, myFreeListBuff );
 
     //--------------------------------------------------
@@ -192,7 +195,7 @@ int main()
     // Seed the random function
     srand(time(NULL));   
     
-    lmmll_init_freelist( &myFreeList,
+    lmmfl_init_freelist( &myFreeList,
 			 MAX_LIST_SIZE,
 			 myListBuff );
 

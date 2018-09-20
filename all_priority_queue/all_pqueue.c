@@ -206,7 +206,6 @@ char lmmpq_push( lmm_pqueue  *curPQueue, char priority, short sval ){
     //--------------------------------------------------
     // Allocate new node to push onto list
     //--------------------------------------------------
-
     if(! lmmll_push_front( &(curPQueue->pqlist), priority, sval ) )
 	return(false);
 
@@ -217,6 +216,8 @@ char lmmpq_push( lmm_pqueue  *curPQueue, char priority, short sval ){
 
     if( ! lmmll_promote_head( &(curPQueue->pqlist), curPQueue->cmpfn ) )
 	return(false);
+
+    printf("pushed (other: %d)(val: %d)...\r\n", priority, sval );
 
     return( true );
 }
