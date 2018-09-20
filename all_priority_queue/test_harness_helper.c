@@ -107,7 +107,10 @@ void print_ll_buffer( lmm_linkedlist *curList ){
 	    fflush(stdout);
 	}
 
-	printf( "->%d<- ", (curList->buffer[curNodeIndy]).val );
+	printf( "->[(next: %d)(other: %d)(val: %d)]<- ", 
+		(curList->buffer[curNodeIndy]).next,
+		(curList->buffer[curNodeIndy]).other,
+		(curList->buffer[curNodeIndy]).val );
 
 	curNodeIndy = (curList->buffer[curNodeIndy]).next;
     }while(cnt++ < curList->size );
