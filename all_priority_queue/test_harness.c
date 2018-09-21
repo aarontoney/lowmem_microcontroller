@@ -36,6 +36,64 @@ typedef enum { pop_front, pop_back} pop_op;
 typedef enum { gs_get, gs_set } gs_op;
 
 //--------------------------------------------------------------------
+// print_state_from_flags
+//
+// Used to print out the current state of the list flags
+//
+// NOTE: This is in the test_harness_helper file in other blibraries
+//--------------------------------------------------------------------
+
+void print_state_from_flags( lmm_list *curList )
+{
+    if( isOverflow(curList)  ) { printf("Overflow flag set.\r\n");  }
+    if( isUnderflow(curList) ) { printf("Underflow flag set.\r\n"); }
+}
+
+void print_state_from_ll_flags( lmm_linkedlist *curList )
+{
+    if( isOverflow(curList)  ) { printf("Overflow flag set.\r\n");  }
+    if( isUnderflow(curList) ) { printf("Underflow flag set.\r\n"); }
+}
+
+//--------------------------------------------------------------------
+// Function: print_ll_buffer
+// Description: Just dumps the raw buffer to screen for comparison
+//
+// NOTE: This is in the test_harness_helper file in other blibraries
+//--------------------------------------------------------------------
+
+void print_ll_buffer( lmm_linkedlist *curList ){
+    if( curList == (lmm_linkedlist *)0 ){
+	printf("Error printing linked list - give a null pointer...\r\n");
+	return;
+    }
+
+    if( lmmll_isEmpty( curList ) ){
+	printf("List is empty...\r\n");
+	fflush(stdout);
+	return;
+    }
+
+    printf("\nList: ");
+    unsigned char curNodeIndy = curList->head;
+    unsigned char cnt = 1;
+    do{
+	if( curList->buffer == 0 ){
+	    printf("Error null buffer\r\n");
+	    fflush(stdout);
+	}
+
+	printf("[(n:%d)(o:%d)(v:%d)] ",
+	       (curList->buffer[curNodeIndy]).next,
+	       (curList->buffer[curNodeIndy]).other,
+	       (curList->buffer[curNodeIndy]).val );
+
+	curNodeIndy = (curList->buffer[curNodeIndy]).next;
+    }while(cnt++ < curList->size );
+    printf("\n");
+}
+
+//--------------------------------------------------------------------
 // option_clear
 //--------------------------------------------------------------------
 void option_clear( lmm_pqueue *curPQueue )
