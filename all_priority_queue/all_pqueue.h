@@ -32,8 +32,6 @@ typedef struct lmm_pqueue_t {
     lmm_linkedlist pqlist;
 
     pQueueCmpFn cmpfn;
-
-    lmm_freelist *freelist;
 } lmm_pqueue;
 
 //------------------------------------------------------------------

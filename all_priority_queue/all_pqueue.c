@@ -83,8 +83,6 @@ char lmmpq_init( lmm_pqueue *curPQueue,
 	break;
     }
 
-    curPQueue->freelist = curFreeList;
-
     if(! lmmll_init( &(curPQueue->pqlist), curFreeList ) ){
 	return( false );
     }
@@ -206,15 +204,19 @@ char lmmpq_push( lmm_pqueue  *curPQueue, unsigned char priority, short sval ){
     //--------------------------------------------------
     // Allocate new node to push onto list
     //--------------------------------------------------
-    if(! lmmll_push_front( &(curPQueue->pqlist), priority, sval ) )
+
+// apt debugging .....
+//    if(! lmmll_push_front( &(curPQueue->pqlist), priority, sval ) )
+    if(! lmmll_push_front( &(curPQueue->pqlist), 1, 9 ) )
 	return(false);
+
 
     // One element lists are sorted
     if( lmmll_size( &curPQueue->pqlist) == 1 ){
 	return( true );
     }
 
-    // apt - debugging - with this out elements should post in order. 
+// apt - debugging - with this out elements should post in order. 
 //    if( ! lmmll_promote_head( &(curPQueue->pqlist), curPQueue->cmpfn ) )
 //	return(false);
 
