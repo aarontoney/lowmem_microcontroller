@@ -146,7 +146,7 @@ char lmmpq_peek( lmm_pqueue *curPQueue, lmm_llcell *retval )
 //------------------------------------------------------------------------------
 
 char lmmpq_contains( lmm_pqueue *curPQueue, 
-  		     unsigned char *pos, char oval, short sval ){
+  		     unsigned char *pos, unsigned char oval, short sval ){
 
     if(curPQueue == (lmm_pqueue *)0)
     	return(false);
@@ -188,7 +188,7 @@ char lmmpq_pop( lmm_pqueue  *curPQueue, lmm_llcell *val ){
 //
 //------------------------------------------------------------------------------
 
-char lmmpq_push( lmm_pqueue  *curPQueue, char priority, short sval ){
+char lmmpq_push( lmm_pqueue  *curPQueue, unsigned char priority, short sval ){
     if( curPQueue == (lmm_pqueue *)0 ){	return(false); }
 
     //--------------------------------------------------
@@ -214,8 +214,9 @@ char lmmpq_push( lmm_pqueue  *curPQueue, char priority, short sval ){
 	return( true );
     }
 
-    if( ! lmmll_promote_head( &(curPQueue->pqlist), curPQueue->cmpfn ) )
-	return(false);
+    // apt - debugging - with this out elements should post in order. 
+//    if( ! lmmll_promote_head( &(curPQueue->pqlist), curPQueue->cmpfn ) )
+//	return(false);
 
     printf("pushed (other: %d)(val: %d)...\r\n", priority, sval );
 
