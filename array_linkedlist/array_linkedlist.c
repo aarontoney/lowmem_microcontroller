@@ -19,7 +19,7 @@
 
 #include "array_linkedlist.h"
 
-// #define DEBUGGING_OUTPUT
+#define DEBUGGING_OUTPUT
 
 #ifdef DEBUGGING_OUTPUT
 #include "stdio.h" // remove post debugging - just needed for printf. 
@@ -227,7 +227,6 @@ char lmmll_swap( lmm_linkedlist *curLinkedList,
 //------------------------------------------------------------------------------
 
 char lmmll_push_front( lmm_linkedlist  *curLinkedList, unsigned char oval, short sval ){
-
     if( curLinkedList == (lmm_linkedlist *)0 ){
 	return(false);
     }
@@ -237,7 +236,7 @@ char lmmll_push_front( lmm_linkedlist  *curLinkedList, unsigned char oval, short
     if(! lmmfl_alloc( curLinkedList->freelist, &newCellIndy, 
 		      curLinkedList->head, oval, sval ) )
 	return(false);
-
+ 
     curLinkedList->head = newCellIndy;
 
     if( curLinkedList->size == 0 ){

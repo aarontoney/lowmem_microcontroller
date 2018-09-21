@@ -23,11 +23,7 @@
 // Datastructures
 //------------------------------------------------------------------
 
-typedef struct lmm_linkedlist_cell_t {
-    unsigned char next;
-    unsigned char other; 
-    short val; 
-} lmm_llcell;
+typedef lmm_flcell lmm_llcell;
 
 typedef struct lmm_linkedlist_t {
     unsigned char size; 
@@ -38,7 +34,7 @@ typedef struct lmm_linkedlist_t {
     unsigned char state;
     lmm_freelist *freelist;
 
-    struct lmm_linkedlist_cell_t *buffer;
+    lmm_llcell *buffer;
 } lmm_linkedlist;
 
 //------------------------------------------------------------------
