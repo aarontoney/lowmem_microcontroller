@@ -1,1 +1,0 @@
-../array_linkedlist/test_harness_helper.h
