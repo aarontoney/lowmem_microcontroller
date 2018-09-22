@@ -11,7 +11,6 @@
 
 #include "../array_list/array_list.h"
 #include "../array_list/array_list_state.h"
-#include "test_harness_helper.h"
 
 #include "../array_linkedlist/array_freelist.h"
 #include "../array_linkedlist/array_linkedlist.h"
