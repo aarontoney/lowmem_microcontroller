@@ -4,8 +4,7 @@ LFLAGS=
 
 LIBS=-lm 
 
-OBJS=all_pqueue.o array_linkedlist.o array_freelist.o test_harness.o test_harness_helper.o 
-
+OBJS=all_pqueue.o ../array_linkedlist/array_linkedlist.o ../array_linkedlist/array_freelist.o test_harness.o
 SRCS=all_pqueue.c test_harness.c 
 
 copy_File: $(OBJS)
@@ -15,5 +14,5 @@ copy_File: $(OBJS)
 	$(CC) $(CFLAGS) -c $<
 
 clean:
-	rm -f all_priority_queue all_priority_queue.o test_harness.o *~ core
+	rm -f all_priority_queue all_priority_queue.o *~ core
 
