@@ -15,7 +15,7 @@
 
 #include "array_linkedlist.h"
 
-// #define DEBUGGING_OUTPUT
+#define DEBUGGING_OUTPUT
 
 #ifdef DEBUGGING_OUTPUT
 #include "stdio.h" // remove post debugging - just needed for printf. 
@@ -66,11 +66,21 @@ char lmmfl_alloc( lmm_freelist *curFreeList,
 {
     if( curFreeList == (lmm_freelist *)0 ){
 	*retCellIndy = 0; 
+
+#ifdef DEBUGGING_OUTPUT
+	printf("ERROR: alloc call on free list failed - passed null free list\r\n");
+#endif
+
 	return( false );
     }
 
     if( curFreeList->size == 0){
 	*retCellIndy = 0; 
+
+#ifdef DEBUGGING_OUTPUT
+	printf("ERROR: alloc call on free list failed - list empty\r\n");
+#endif
+
 	return( false );
     }
 

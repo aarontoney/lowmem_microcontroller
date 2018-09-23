@@ -233,7 +233,8 @@ char option_promote_head( lmm_linkedlist *curLinkedList )
 int main()
 {
     //--------------------------------------------------
-    // Create a free list
+    // Create a free list - could be shared by multiple
+    // data lmm structures. 
     //--------------------------------------------------
     lmm_freelist myFreeList;
     lmm_flcell myFreeListBuff[FREE_LIST_BUFF_SIZE];
@@ -244,8 +245,8 @@ int main()
     //--------------------------------------------------
     // Create Linked List
     //--------------------------------------------------
-    lmm_linkedlist curLinkedList;
-    if(! lmmll_init( &curLinkedList, &myFreeList ) ){
+    lmm_linkedlist myLinkedList;
+    if(! lmmll_init( &myLinkedList, &myFreeList ) ){
 	printf("Error initilizing the linked list.\r\n");
 	printf("Exiting...\r\n");
 	return(0);
@@ -255,20 +256,11 @@ int main()
     // 
     //--------------------------------------------------
 
-    lmm_flcell myListBuff[MAX_LIST_SIZE];
-
-    lmm_linkedlist myLinkedList;
     long int choice;
     char loop = true;
     
     // Seed the random function
     srand(time(NULL));   
-    
-    lmmfl_init_freelist( &myFreeList,
-			 MAX_LIST_SIZE,
-			 myListBuff );
-
-    lmmll_init(&myLinkedList, &myFreeList);
 
     printf("\nStarting....\n");
     

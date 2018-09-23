@@ -275,7 +275,8 @@ char lmmll_pop_front( lmm_linkedlist  *curLinkedList ){
 //------------------------------------------------------------------------------
 // push_back
 //------------------------------------------------------------------------------
-char lmmll_push_back( lmm_linkedlist  *curLinkedList, unsigned char oval, short sval ){
+char lmmll_push_back( lmm_linkedlist  *curLinkedList, 
+		      unsigned char oval, short sval ){
     if( curLinkedList == (lmm_linkedlist *)0 )
 	return(false);
 
@@ -285,6 +286,7 @@ char lmmll_push_back( lmm_linkedlist  *curLinkedList, unsigned char oval, short 
 		      FREE_LIST_SENTINEL,
 		      oval, sval ) )
 	return(false);
+
 
     if( curLinkedList->size == 0 ){
 	curLinkedList->head = newCellIndy;
