@@ -16,7 +16,6 @@
 #include "../array_linkedlist/array_linkedlist.h"
 #include "../array_linkedlist/array_freelist.h"
 
-
 #define true 1
 #define false 0
 

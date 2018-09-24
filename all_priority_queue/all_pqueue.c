@@ -11,6 +11,9 @@
 //- package. Insertion is sorted - so worst case O(N), while removing elemnts
 //- O(1) as expected. 
 //-
+//- Two default sorting functions default_cell_lt and default_cell_gt are 
+//- provided - so this can be either a min or max priority queue. 
+//-
 //------------------------------------------------------------------------------
 
 #include "all_pqueue.h"
@@ -203,8 +206,7 @@ char lmmpq_push( lmm_pqueue  *curPQueue, unsigned char priority, short sval ){
     // Allocate new node to push onto list
     //--------------------------------------------------
 
-//    if(! lmmll_push_front( &(curPQueue->pqlist), priority, sval ) )
-    if(! lmmll_push_front( &(curPQueue->pqlist), (unsigned char ) 9, (short)7 ) )
+    if(! lmmll_push_front( &(curPQueue->pqlist), priority, sval ) )
 	return(false);
 
     // One element lists are sorted

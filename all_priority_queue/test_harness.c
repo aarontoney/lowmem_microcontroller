@@ -75,6 +75,10 @@ void print_ll_buffer( lmm_linkedlist *curList ){
 
     printf("\nList: ");
     unsigned char curNodeIndy = curList->head;
+
+    // APT debugging...
+    printf("print_ll_buffer head at: %d\r\n", curList->head);
+
     unsigned char cnt = 1;
     do{
 	if( curList->buffer == 0 ){
@@ -235,26 +239,24 @@ int main()
     //--------------------------------------------------
     lmm_pqueue myPQueue;
 
-    if(! lmmpq_init( &myPQueue, pqueue_max, ((pQueueCmpFn) 0), &myFreeList ) ){
+    if(! lmmpq_init( &myPQueue, 
+		     pqueue_max, // _min, _max, or _other
+		     ((pQueueCmpFn) 0), // comparision function for _other 
+		     &myFreeList ) ){
 	printf("Error initilizing the priority queue.\r\n");
 	printf("Exiting...\r\n");
 	return(0);
     }
 
     //--------------------------------------------------
-    // 
+    // Main Loop
     //--------------------------------------------------
-    lmm_flcell myListBuff[MAX_LIST_SIZE];
 
     long int choice;
     char loop = true;
     
     // Seed the random function
     srand(time(NULL));   
-    
-    lmmfl_init_freelist( &myFreeList,
-			 MAX_LIST_SIZE,
-			 myListBuff );
 
     printf("\nStarting....\n");
     
@@ -265,10 +267,10 @@ int main()
 	       "2. size\n",
 	       "3. isEmpty\n",
 
-	       "4. push_front\n",
-	       "5. pop_front\n",
+	       "4. push\n",
+	       "5. pop\n",
 
-	       "6. peek_front\n",
+	       "6. peek\n",
 
 	       "7. contains \n",
 
@@ -304,14 +306,6 @@ int main()
 		option_peek_front( &myPQueue );
 		break;
 
-//	    case :
-//		option_gs( &myPQueue, gs_get );
-//		break;
-//
-//	    case :
-//		option_gs( &myPQueue, gs_set );
-//		break;
-
 	    case 7:
 		option_contains( &myPQueue );
 		break;
@@ -325,7 +319,7 @@ int main()
 		break;
 	    }
 	
-	print_state_from_ll_flags( &(myPQueue.pqlist) );
+//	print_state_from_ll_flags( &(myPQueue.pqlist) );
 	
 	print_ll_buffer( &(myPQueue.pqlist) );
 	fflush(stdin);
