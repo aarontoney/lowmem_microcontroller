@@ -23,6 +23,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+//#define DEBUGGING_OUTPUT
+
 #define MAX_LIST_SIZE 9
 #define BUFFER_LIST_MAXVAL 9
 
@@ -86,10 +88,17 @@ void print_ll_buffer( lmm_linkedlist *curList ){
 	    fflush(stdout);
 	}
 
+#ifdef DEBUGGING_OUTPUT
 	printf("[(n:%d)(o:%d)(v:%d)] ",
 	       (curList->buffer[curNodeIndy]).next,
 	       (curList->buffer[curNodeIndy]).other,
 	       (curList->buffer[curNodeIndy]).val );
+#else
+	printf("[(o:%d)(v:%d)] ",
+	       (curList->buffer[curNodeIndy]).other,
+	       (curList->buffer[curNodeIndy]).val );
+#endif
+
 
 	curNodeIndy = (curList->buffer[curNodeIndy]).next;
     }while(cnt++ < curList->size );

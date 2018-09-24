@@ -18,7 +18,7 @@
 
 #include "all_pqueue.h"
 
-#define DEBUGGING_OUTPUT
+//#define DEBUGGING_OUTPUT
 
 #ifdef DEBUGGING_OUTPUT
 #include "stdio.h" // remove post debugging - just needed for printf. 
@@ -214,9 +214,8 @@ char lmmpq_push( lmm_pqueue  *curPQueue, unsigned char priority, short sval ){
 	return( true );
     }
 
-// apt - debugging - with this out elements should post in order. 
-//    if( ! lmmll_promote_head( &(curPQueue->pqlist), curPQueue->cmpfn ) )
-//	return(false);
+    if( ! lmmll_promote_head( &(curPQueue->pqlist), curPQueue->cmpfn ) )
+	return(false);
 
     return( true );
 }
