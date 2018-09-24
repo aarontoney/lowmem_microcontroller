@@ -74,6 +74,11 @@ char lmmfl_alloc( lmm_freelist *curFreeList,
 	return( false );
     }
 
+#ifdef DEBUGGING_OUTPUT
+    printf("ALLOC: next: %d, other: %d, val: %d\r\n", 
+	   (int)c_next, (int)c_other, (int)c_val);
+#endif
+
     if( curFreeList->size == 0){
 	*retCellIndy = 0; 
 
@@ -89,7 +94,7 @@ char lmmfl_alloc( lmm_freelist *curFreeList,
     curFreeList->head = (curFreeList->buffer[curFreeList->head]).next;
     curFreeList->size--;
 
-    // Zero out the cell before we return it
+    // Assign the cell values before we return it
     (curFreeList->buffer[(*retCellIndy)]).next = c_next; 
     (curFreeList->buffer[(*retCellIndy)]).other = c_other;
     (curFreeList->buffer[(*retCellIndy)]).val = c_val;

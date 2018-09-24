@@ -19,7 +19,7 @@
 
 #include "array_linkedlist.h"
 
-#define DEBUGGING_OUTPUT
+// #define DEBUGGING_OUTPUT
 
 #ifdef DEBUGGING_OUTPUT
 #include "stdio.h" // remove post debugging - just needed for printf. 
@@ -237,6 +237,12 @@ char lmmll_push_front( lmm_linkedlist  *curLinkedList, unsigned char oval, short
 		      curLinkedList->head, oval, sval ) )
 	return(false);
  
+#ifdef DEBUGGING_OUTPUT
+    printf("lmmll_push_front: Head was at: %d, now at: %d\r\n", 
+	   curLinkedList->head, 
+	   newCellIndy );
+#endif
+
     curLinkedList->head = newCellIndy;
 
     if( curLinkedList->size == 0 ){
