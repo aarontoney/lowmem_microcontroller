@@ -21,14 +21,8 @@
 #include "stdio.h" // remove post debugging - just needed for printf. 
 #endif
 
-// is_empty: check whether the queue has no elements.
-
-// insert_with_priority: add an element to the queue with an associated priority.
-
-// pull_highest_priority_element:
-
 //------------------------------------------------------------------------------
-// Private Functions
+// Start of File Scoped Functions
 //------------------------------------------------------------------------------
 
 //----------------------------------------------------------
@@ -54,6 +48,10 @@ char default_cell_gt( lmm_llcell *c1, lmm_llcell *c2 ){
 
     return( 1 );
 }
+
+//------------------------------------------------------------------------------
+// End of File Scoped Functions
+//------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
 // init
@@ -205,11 +203,9 @@ char lmmpq_push( lmm_pqueue  *curPQueue, unsigned char priority, short sval ){
     // Allocate new node to push onto list
     //--------------------------------------------------
 
-// apt debugging .....
 //    if(! lmmll_push_front( &(curPQueue->pqlist), priority, sval ) )
-    if(! lmmll_push_front( &(curPQueue->pqlist), 1, 9 ) )
+    if(! lmmll_push_front( &(curPQueue->pqlist), (unsigned char ) 9, (short)7 ) )
 	return(false);
-
 
     // One element lists are sorted
     if( lmmll_size( &curPQueue->pqlist) == 1 ){
@@ -219,8 +215,6 @@ char lmmpq_push( lmm_pqueue  *curPQueue, unsigned char priority, short sval ){
 // apt - debugging - with this out elements should post in order. 
 //    if( ! lmmll_promote_head( &(curPQueue->pqlist), curPQueue->cmpfn ) )
 //	return(false);
-
-    printf("pushed (other: %d)(val: %d)...\r\n", priority, sval );
 
     return( true );
 }
