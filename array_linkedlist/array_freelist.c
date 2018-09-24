@@ -67,17 +67,9 @@ char lmmfl_alloc( lmm_freelist *curFreeList,
     if( curFreeList == (lmm_freelist *)0 ){
 	*retCellIndy = 0; 
 
-#ifdef DEBUGGING_OUTPUT
-	printf("ERROR: alloc call on free list failed - passed null free list\r\n");
-#endif
-
 	return( false );
     }
 
-#ifdef DEBUGGING_OUTPUT
-    printf("ALLOC: next: %d, other: %d, val: %d\r\n", 
-	   (int)c_next, (int)c_other, (int)c_val);
-#endif
 
     if( curFreeList->size == 0){
 	*retCellIndy = 0; 
