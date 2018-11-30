@@ -2,23 +2,59 @@
 //- File:   array_list.c
 //- Author: Aaron Toney
 //- Date:   August 22nd, 2018
-//- Verion: 0.1
-//- Revions:
+//-
+//- git repositor: https://github.com/aarontoney/lowmem_microcontroller.git
 //- 
 //- Description:
+//- ------------
 //- 
-//- Array based implementation of a list structure. Intended as a building block
-//- for more complext algorithms on low memory systems without dynamic memory 
-//- management tools like malloc. An array based implementation enables heap or 
-//- stack based allocation. Main drawback is that it has array O(n) times for 
-//- deletion, insertion, and search. 
+//- Common building blocks for more complex algorithms on low memory 
+//- systems management tools like malloc.
+//-
+//- An array based implementation enables heap or stack based allocation. 
+//- Main drawback is that it has array O(n) times for deletion, insertion,
+//- and search. 
 //-
 //- Implementation:
+//- ---------------
 //-
 //- The list uses zero based indexing. The internal head and tail values 
-//- correspond to indexes for the first element, and one past the last element 
-//- respectivly. 
+//- correspond to indexes for the first element, and one past the last 
+//- element respectivly. 
+//-
+//------------------------------------------------------------------------------
 //- 
+//- Copyright 2018 Aaron Toney
+//- 
+//- Redistribution and use in source  and binary forms, with or without
+//- modification, are permitted provided  that the following conditions
+//- are met:
+//- 
+//- 1. Redistributions of  source code must retain  the above copyright
+//- notice, this list of conditions and the following disclaimer.
+//- 
+//- 2.  Redistributions  in  binary   form  must  reproduce  the  above
+//- copyright  notice,  this  list  of  conditions  and  the  following
+//- disclaimer  in the  documentation and/or  other materials  provided
+//- with the distribution.
+//- 
+//- 3. Neither  the name of the  copyright holder nor the  names of its
+//- contributors may  be used  to endorse  or promote  products derived
+//- from this software without specific prior written permission.
+//- 
+//- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+//- "AS IS" AND  ANY EXPRESS OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT
+//- LIMITED TO,  THE IMPLIED WARRANTIES OF  MERCHANTABILITY AND FITNESS
+//- FOR  A PARTICULAR  PURPOSE ARE  DISCLAIMED. IN  NO EVENT  SHALL THE
+//- COPYRIGHT  HOLDER  OR  CONTRIBUTORS   BE  LIABLE  FOR  ANY  DIRECT,
+//- INDIRECT, INCIDENTAL, SPECIAL,  EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+//- (INCLUDING, BUT NOT LIMITED TO,  PROCUREMENT OF SUBSTITUTE GOODS OR
+//- SERVICES; LOSS OF USE, DATA,  OR PROFITS; OR BUSINESS INTERRUPTION)
+//- HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+//- STRICT  LIABILITY,  OR  TORT (INCLUDING  NEGLIGENCE  OR  OTHERWISE)
+//- ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+//- OF THE POSSIBILITY OF SUCH DAMAGE.
+//-
 //------------------------------------------------------------------------------
 
 #include "array_list.h"
